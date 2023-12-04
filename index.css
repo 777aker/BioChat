@@ -1,6 +1,21 @@
-body {
+html, body {
   background-color: #16a085;
   color: #2c3e50;
+
+  height: 100vh;
+  width: 98vw;
+  margin: 0px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+
+  gap: 0px;
+  padding-top: 5px;
+  padding-right: 15px;
+
+  overflow: hidden;
 }
 
 * {
@@ -77,4 +92,64 @@ label {
 
 ::-webkit-scrollbar-corner {
   background: #555;
+}
+
+.login {
+  display: block;
+}
+
+.text-area {
+  flex: 0 0 70%;
+  overflow-y: scroll;
+  display: none;
+  padding: 10px;
+}
+
+.profile-area {
+  flex: 0 0 30%;
+  overflow-y: scroll;
+  display: none;
+
+  padding: 10px;
+}
+
+.menu-option {
+  transition-duration: .4s;
+  background-color: #2A4260;
+  width: 50%;
+}
+
+.menu-drop-btn {
+  width: 100%;
+}
+
+.menu-option:hover > .menu-elements {
+  display: flex;
+  box-shadow: 0px 0px 50px 2px #2D547A;
+
+  transition-duration: .4s;
+}
+
+.menu-elements {
+  display: none;
+
+  transition-duration: .4s;
+
+  flex-direction: column;
+}
+
+.menu-option * {
+  background-color: #2A4260;
+}
+
+.menu-option:hover > button {
+  padding: 0px;
+}
+
+.chatbox {
+  width: 90%;
+}
+
+.airesponse {
+  font-size: 20pt;
 }
