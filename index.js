@@ -45,6 +45,7 @@ function firstresponse() {
   setTimeout(function() {createCheckBox(textarea, "Fatigue, emotional stress")}, timer1 + 400);
   setTimeout(function() {createCheckBox(textarea, "Neck and jaw muscles and joint pain")}, timer1 + 600);
 
+  setTimeout(function() {secondresponse()}, timer1 + 800);
 }
 
 function secondresponse() {
@@ -62,6 +63,8 @@ function secondresponse() {
   setTimeout(function() {createCheckBox(textarea, "Bright or flickering lights, loude noises, strong smells")}, timer1 + 1000);
   setTimeout(function() {createCheckBox(textarea, "Missing a meal, alcohol, chocolate, aged cheese, increase or descrease in caffeine")}, timer1 + 1200);
   setTimeout(function() {createCheckBox(textarea, "Sinuses")}, timer1 + 1400);
+
+  setTimeout(function() {thirdresponse()}, timer1 + 1600);
 }
 
 function thirdresponse() {
@@ -87,14 +90,8 @@ function thirdresponse() {
 document.onkeypress = function(e) {
   e = e || window.event;
 
-  if(e.keyCode == 49) {
+  if(e.keyCode == 13) {
     firstresponse();
-  }
-  if(e.keyCode == 50) {
-    secondresponse();
-  }
-  if(e.keyCode == 51) {
-    thirdresponse();
   }
 
   console.log(e.keyCode);
