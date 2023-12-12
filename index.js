@@ -12,10 +12,13 @@ function typeText(target, message, interval, index=0) {
   }
 }
 
+const holding = document.querySelector('.holding');
+
 loginbtn.addEventListener('click', function() {
   logindiv.style.display = 'none';
   textarea.style.display = 'block';
   profilearea.style.display = 'block';
+  typeText(holding, "Hi, I'm BioChat! I'm an AI powered chat bot here to help you with any medical concerns you may have.", 10)
 });
 
 const name = document.querySelector("#name");
@@ -37,21 +40,27 @@ function firstresponse() {
   textarea.appendChild(response);
   response.setAttribute('class', 'airesponse');
   let speed = 10;
-  let wholetext = "Considering your family history and age, this is most likely no cause for concern. If you often experience headaches, it may be do to a need for glasses. You put Macular Degeneration in your history, if you haven't had your yearly vision check up you should get one. These are the common types of headaches: tension, migraine, sinus, and cluster. Are you experiencing any of the following?";
+  let wholetext = "Considering your family history and age, this is most likely no cause for concern. You haven't had a vision checkup for awhile, and headaches often stem from a need for glasses. Are you experiencing any of the following?";
   typeText(response, wholetext, speed);
   let timer1 =  speed * wholetext.length;
   setTimeout(function() {createCheckBox(textarea, "Dull squeezing pain on both sides of the head")}, timer1);
   setTimeout(function() {createCheckBox(textarea, "Shoulder and kneck aches")}, timer1 + 200);
   setTimeout(function() {createCheckBox(textarea, "Fatigue, emotional stress")}, timer1 + 400);
-  setTimeout(function() {createCheckBox(textarea, "Neck and jaw muscles and joint pain")}, timer1 + 600);
+  setTimeout(function() {createCheckBox(textarea, "Jaw muscle, or joint pain")}, timer1 + 600);
 
   setTimeout(function() {secondresponse()}, timer1 + 800);
 }
 
 function secondresponse() {
-  let wholetext = "Do you often experience a sever headache after any of the following?";
-  let response = document.createElement('div');
+  textarea.appendChild(document.createElement('br'));
+  let response = document.createElement('button');
+  response.innerHTML = 'Submit';
+  textarea.appendChild(response);
+
+  let wholetext = "Do you often experience a severe headache after any of the following?";
+  response = document.createElement('div');
   let speed = 10;
+  //textarea.appendChild(document.createElement('br'));
   textarea.appendChild(response);
   response.setAttribute('class', 'airesponse');
   let timer1 = speed * wholetext.length;
@@ -60,31 +69,33 @@ function secondresponse() {
   setTimeout(function() {createCheckBox(textarea, "Lack of sleep or oversleeping")}, timer1 + 400);
   setTimeout(function() {createCheckBox(textarea, "Fatigue")}, timer1 + 600);
   setTimeout(function() {createCheckBox(textarea, "Emotional Stress")}, timer1 + 800);
-  setTimeout(function() {createCheckBox(textarea, "Bright or flickering lights, loude noises, strong smells")}, timer1 + 1000);
-  setTimeout(function() {createCheckBox(textarea, "Missing a meal, alcohol, chocolate, aged cheese, increase or descrease in caffeine")}, timer1 + 1200);
+  setTimeout(function() {createCheckBox(textarea, "Bright or flickering lights, loud noises, strong smells")}, timer1 + 1000);
+  setTimeout(function() {createCheckBox(textarea, "Missing a meal or consuming alcohol, chocolate, aged cheese, increase or descrease in caffeine")}, timer1 + 1200);
   setTimeout(function() {createCheckBox(textarea, "Sinuses")}, timer1 + 1400);
 
   setTimeout(function() {thirdresponse()}, timer1 + 1600);
 }
 
 function thirdresponse() {
-  let wholetext = "If you feel a sharp severe pain in one area, this is probably a cluster headache and can last for months. There are many treatment options.";
-  let response = document.createElement('div');
-  let speed = 10;
-  textarea.appendChild(response);
-  response.setAttribute('class', 'airesponse');
-  typeText(response, wholetext, speed);
-  response = document.createElement('button');
+  textarea.appendChild(document.createElement('br'));
+  let response = document.createElement('button');
   response.innerHTML = 'Submit';
   response.addEventListener('click', function() {
     let response = document.createElement('div');
     let speed = 10;
     textarea.appendChild(response);
     response.setAttribute('class', 'airesponse');
-    let wholetext = "Based on what you selected, it is most likely you are experiecing migraines, which are more common in women. The best treatment is to avoid the triggers you selected. If you experience blurry vision and intense pain, you should also look into getting over the counter or prescription migraine medicine.";
+    let wholetext = "Based on what you selected, it is most likely you are experiecing migraines, which are more common in women than men. The best treatment is to avoid the triggers you selected. If you experience blurry vision and intense pain, you should also look into getting over the counter or prescription migraine medicine.";
     typeText(response, wholetext, speed);
   });
   textarea.appendChild(response);
+
+  let wholetext = "If you feel a sharp severe pain in one area, this is probably a cluster headache and can last for months. There are many treatment options.";
+  response = document.createElement('div');
+  let speed = 10;
+  textarea.appendChild(response);
+  response.setAttribute('class', 'airesponse');
+  typeText(response, wholetext, speed);
 }
 
 document.onkeypress = function(e) {
